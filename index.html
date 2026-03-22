@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ГРЭК — грузоперевозки фурой по России | Перевозка грузов автотранспортом</title>
+  <meta name="description" content="ГРЭК — грузоперевозки фурой по России и СНГ. Перевозка грузов автотранспортом, расчет стоимости, доставка точно в срок. Оставьте заявку онлайн." />
+  <meta name="keywords" content="грузоперевозки фурой, грузоперевозки автотранспортом, перевозка грузов по России, доставка грузов фурой, логистика, транспортная компания ГРЭК" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="ГРЭК — грузоперевозки фурой по России" />
+  <meta property="og:description" content="Перевозка грузов автотранспортом, онлайн-калькулятор стоимости, заявки на перевозку." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ru_RU" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TransportationService",
+    "name": "ГРЭК",
+    "description": "Грузоперевозки фурой по России и СНГ",
+    "telephone": "+7 (921) 919-66-21",
+    "email": "GREK0708@bk.ru",
+    "areaServed": ["Россия", "СНГ"],
+    "serviceType": "Грузоперевозки автотранспортом"
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --line: #e2e8f0;
+      --accent: #f59e0b;
+      --accent-dark: #d97706;
+      --success: #15803d;
+      --light: #f8fafc;
+      --shadow: 0 15px 40px rgba(2, 6, 23, 0.12);
+      --radius: 20px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--text);
+      background: var(--light);
+      line-height: 1.55;
+    }
+    .container { width: min(1160px, calc(100% - 32px)); margin: 0 auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .topbar-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 0; gap: 20px;
+    }
+    .logo {
+      color: white; font-weight: 800; letter-spacing: 0.4px;
+      text-decoration: none; font-size: 20px;
+    }
+    .nav { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
+    .nav a { color: rgba(255,255,255,0.88); text-decoration: none; font-size: 14px; }
+    .nav a:hover { color: white; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      border: none; cursor: pointer; padding: 14px 22px; border-radius: 14px;
+      font-weight: 700; text-decoration: none; transition: .2s ease;
+    }
+    .btn-primary { background: var(--accent); color: #111827; box-shadow: 0 10px 24px rgba(245, 158, 11, 0.25); }
+    .btn-primary:hover { background: var(--accent-dark); color: white; transform: translateY(-1px); }
+    .btn-dark { background: #0f172a; color: white; }
+    .btn-telegram { background: #229ED9; color: white; }
+    .btn-telegram:hover { transform: translateY(-1px); filter: brightness(0.95); }
+    .hero {
+      background:
+        linear-gradient(135deg, rgba(15,23,42,.92), rgba(30,41,59,.86)),
+        url('https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1600&q=80') center/cover;
+      color: white; padding: 76px 0 68px;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 28px; align-items: center; }
+    .badge {
+      display: inline-block; padding: 10px 14px; background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35); color: #fde68a; border-radius: 999px;
+      font-size: 13px; font-weight: 700; margin-bottom: 18px;
+    }
+    h1 { font-size: clamp(34px, 5vw, 60px); line-height: 1.05; margin: 0 0 18px; }
+    .hero p { font-size: 18px; color: rgba(255,255,255,.86); max-width: 680px; margin: 0 0 28px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 28px; }
+    .hero-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .hero-list div {
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 16px; padding: 16px;
+    }
+    .hero-list strong { display: block; font-size: 22px; margin-bottom: 4px; }
+    .quote-card {
+      background: rgba(255,255,255,0.98); color: var(--text); border-radius: 24px;
+      padding: 24px; box-shadow: var(--shadow);
+    }
+    .quote-card h3 { margin: 0 0 8px; font-size: 24px; }
+    .quote-card p { margin: 0 0 18px; color: var(--muted); font-size: 15px; }
+    .quote-card form, .contact-list { display: grid; gap: 14px; }
+    .field { display: grid; gap: 8px; }
+    .field label { font-size: 14px; color: var(--text); font-weight: 600; }
+    .field input, .field select, .field textarea {
+      width: 100%; padding: 14px 15px; border: 1px solid var(--line);
+      border-radius: 14px; font: inherit; background: white;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      outline: 2px solid rgba(245, 158, 11, 0.18); border-color: var(--accent);
+    }
+    .result-box { border-radius: 18px; padding: 18px; background: #fff7ed; border: 1px solid #fed7aa; }
+    .result-price { font-size: 34px; font-weight: 800; color: #9a3412; margin: 6px 0 4px; }
+    section { padding: 76px 0; }
+    .section-head {
+      display: flex; justify-content: space-between; gap: 20px; align-items: end; margin-bottom: 28px;
+    }
+    .section-head h2 { margin: 0 0 10px; font-size: clamp(28px, 3vw, 42px); }
+    .section-head p { margin: 0; color: var(--muted); max-width: 680px; }
+    .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .card {
+      background: white; border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 24px; box-shadow: 0 10px 24px rgba(15,23,42,0.04);
+    }
+    .card h3 { margin: 0 0 10px; font-size: 22px; }
+    .card p { margin: 0; color: var(--muted); }
+    .icon {
+      width: 52px; height: 52px; border-radius: 14px; display: inline-flex;
+      align-items: center; justify-content: center; background: #fff7ed; color: #c2410c;
+      font-size: 24px; margin-bottom: 16px;
+    }
+    .split, .contacts { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
+    .dark-box {
+      background: linear-gradient(135deg, #0f172a, #1e293b); color: white; border-radius: 24px;
+      padding: 32px; box-shadow: var(--shadow);
+    }
+    .dark-box p, .dark-box li { color: rgba(255,255,255,.84); }
+    ul.clean { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 12px; }
+    ul.clean li { padding-left: 28px; position: relative; }
+    ul.clean li::before {
+      content: '✓'; position: absolute; left: 0; top: 0; color: #fbbf24; font-weight: 800;
+    }
+    .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .price-tile {
+      background: white; border: 1px solid var(--line); border-radius: 18px;
+      padding: 20px; text-align: center;
+    }
+    .price-tile strong { display: block; font-size: 30px; margin: 8px 0 6px; }
+    .contact-item {
+      background: white; border: 1px solid var(--line); border-radius: 18px; padding: 18px;
+    }
+    .contact-item strong { display: block; margin-bottom: 6px; }
+    .footer { background: #0f172a; color: rgba(255,255,255,.72); padding: 28px 0; font-size: 14px; }
+    .muted { color: var(--muted); }
+    .success { color: var(--success); font-weight: 700; }
+    .error { color: #b91c1c; font-weight: 700; }
+    @media (max-width: 1024px) {
+      .hero-grid, .split, .contacts, .cards, .pricing-grid { grid-template-columns: 1fr; }
+      .hero-list { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) {
+      .topbar-inner, .section-head { align-items: flex-start; flex-direction: column; }
+      .nav { gap: 10px 14px; }
+      .hero { padding: 52px 0; }
+      section { padding: 56px 0; }
+      .quote-card, .dark-box, .card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="#top" class="logo">ГРЭК</a>
+      <nav class="nav">
+        <a href="#services">Услуги</a>
+        <a href="#about">О компании</a>
+        <a href="#rates">Тарифы</a>
+        <a href="#contacts">Контакты</a>
+        <a href="#calculator" class="btn btn-primary" style="padding:10px 16px; border-radius:12px;">Рассчитать стоимость</a>
+        <a href="https://t.me/grek_logistic" target="_blank" rel="noopener noreferrer" class="btn btn-telegram" style="padding:10px 16px; border-radius:12px;">Telegram</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">Грузоперевозки автотранспортом по России и СНГ</div>
+          <h1>Надежные перевозки фурой с точным расчетом стоимости</h1>
+          <p>
+            Доставляем генеральные, паллетные и крупногабаритные грузы. Подберем транспорт,
+            рассчитаем цену за 1 минуту и организуем перевозку точно в срок.
+          </p>
+          <div class="hero-actions">
+            <a href="#calculator" class="btn btn-primary">Онлайн-калькулятор</a>
+            <a href="#contacts" class="btn btn-dark">Оставить заявку</a>
+            <a href="https://t.me/grek_logistic" target="_blank" rel="noopener noreferrer" class="btn btn-telegram">Написать в Telegram</a>
+          </div>
+          <div class="hero-list">
+            <div><strong>20 т</strong>Перевозка стандартной фурой</div>
+            <div><strong>24/7</strong>Поддержка и сопровождение груза</div>
+            <div><strong>500+</strong>Выполненных рейсов в месяц</div>
+          </div>
+        </div>
+
+        <aside class="quote-card" id="calculator">
+          <h3>Калькулятор перевозки</h3>
+          <p>Укажите параметры груза и маршрута — получите ориентировочную стоимость перевозки.</p>
+
+          <form id="calcForm">
+            <div class="field">
+              <label for="distance">Расстояние, км</label>
+              <input type="number" id="distance" min="1" placeholder="Например: 850" required />
+            </div>
+
+            <div class="field">
+              <label for="weight">Вес груза, т</label>
+              <input type="number" id="weight" min="0.1" step="0.1" placeholder="Например: 12.5" required />
+            </div>
+
+            <div class="field">
+              <label for="cargoType">Тип груза</label>
+              <select id="cargoType">
+                <option value="1">Стандартный груз</option>
+                <option value="1.15">Хрупкий груз</option>
+                <option value="1.2">Срочный груз</option>
+                <option value="1.25">Крупногабаритный груз</option>
+                <option value="1.3">Опасный груз</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Рассчитать</button>
+
+            <div class="result-box" id="calcResult">
+              <div class="muted">Итоговая стоимость</div>
+              <div class="result-price">—</div>
+              <div class="muted">Заполните поля и нажмите кнопку расчета</div>
+            </div>
+          </form>
+        </aside>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Наши услуги</h2>
+            <p>Работаем с разными типами грузов и подбираем транспорт под задачу клиента.</p>
+          </div>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="icon">🚚</div>
+            <h3>Междугородние перевозки</h3>
+            <p>Доставка грузов фурами по всей России с точным соблюдением сроков и маршрута.</p>
+          </article>
+          <article class="card">
+            <div class="icon">📦</div>
+            <h3>Перевозка сборных грузов</h3>
+            <p>Оптимальный вариант для снижения затрат при отправке небольших партий товара.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container split">
+        <div class="dark-box">
+          <h2>Почему выбирают нас</h2>
+          <p>
+            Мы специализируемся на автоперевозках фурами и предлагаем понятные условия,
+            прозрачные цены и оперативную логистику.
+          </p>
+          <ul class="clean">
+            <li>Работаем только с проверенными водителями</li>
+            <li>Расчет стоимости без скрытых платежей</li>
+            <li>Контроль местоположения груза по маршруту</li>
+            <li>Подбор транспорта под объем и специфику груза</li>
+          </ul>
+        </div>
+
+        <div class="card" style="padding:32px;">
+          <h2 style="margin-top:0;">Как мы работаем</h2>
+          <div class="contact-list">
+            <div class="contact-item">
+              <strong>1. Получаем заявку</strong>
+              Вы оставляете маршрут, параметры груза и желаемые сроки доставки.
+            </div>
+            <div class="contact-item">
+              <strong>2. Рассчитываем стоимость</strong>
+              Подбираем фуру, определяем тариф и согласовываем условия перевозки.
+            </div>
+            <div class="contact-item">
+              <strong>3. Выполняем перевозку</strong>
+              Организуем подачу транспорта, загрузку и доставку до точки назначения.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rates">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Ориентировочные тарифы</h2>
+            <p>Ниже примерные рыночные значения для перевозок фурой 20 т. Финальная цена зависит от маршрута, сезонности, загрузки направления и типа груза.</p>
+          </div>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="price-tile">
+            <div class="muted">До 300 км</div>
+            <strong>от 85 ₽/км</strong>
+            <div class="muted">Короткие рейсы</div>
+          </div>
+          <div class="price-tile">
+            <div class="muted">300–800 км</div>
+            <strong>от 78 ₽/км</strong>
+            <div class="muted">Средние расстояния</div>
+          </div>
+          <div class="price-tile">
+            <div class="muted">800–1500 км</div>
+            <strong>от 72 ₽/км</strong>
+            <div class="muted">Дальние рейсы</div>
+          </div>
+          <div class="price-tile">
+            <div class="muted">От 1500 км</div>
+            <strong>от 68 ₽/км</strong>
+            <div class="muted">Магистральные перевозки</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts">
+      <div class="container contacts">
+        <div class="dark-box">
+          <h2>Контакты</h2>
+          <p>Свяжитесь с нами удобным способом — быстро рассчитаем стоимость и предложим решение под ваш груз.</p>
+          <ul class="clean">
+            <li>Телефон: +7 (921) 919-66-21</li>
+            <li>Email: GREK0708@bk.ru</li>
+            <li>Telegram: @grek_logistic</li>
+            <li>График: ежедневно с 08:00 до 22:00</li>
+            <li>География: Россия, СНГ</li>
+          </ul>
+        </div>
+
+        <div class="card" style="padding:32px;">
+          <h2 style="margin-top:0;">Оставить заявку</h2>
+          <form id="leadForm" class="contact-list">
+            <div class="field">
+              <label for="name">Ваше имя</label>
+              <input id="name" name="Имя" type="text" placeholder="Иван" required />
+            </div>
+            <div class="field">
+              <label for="phone">Телефон</label>
+              <input id="phone" name="Телефон" type="tel" placeholder="+7 (___) ___-__-__" required />
+            </div>
+            <div class="field">
+              <label for="message">Комментарий</label>
+              <textarea id="message" name="Комментарий" rows="4" placeholder="Например: Москва → Новосибирск, 18 тонн"></textarea>
+            </div>
+            <div class="field">
+              <label for="route">Маршрут</label>
+              <input id="route" name="Маршрут" type="text" placeholder="Санкт-Петербург → Москва" />
+            </div>
+            <div class="field">
+              <label for="cargo">Описание груза</label>
+              <input id="cargo" name="Груз" type="text" placeholder="Например: стройматериалы, 20 тонн" />
+            </div>
+            <button type="submit" class="btn btn-primary">Отправить заявку</button>
+            <div id="leadSuccess" class="success" style="display:none;">Спасибо! Заявка отправлена. Мы скоро свяжемся с вами.</div>
+            <div id="leadError" class="error" style="display:none;">Не удалось отправить заявку. Проверьте настройки интеграции.</div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © 2026 ГРЭК — грузоперевозки автотранспортом. Все права защищены.
+    </div>
+  </footer>
+
+  <script>
+    const API_ENDPOINT = '/api/send-lead';
+
+    function getLeadData() {
+      return {
+        name: document.getElementById('name')?.value || '',
+        phone: document.getElementById('phone')?.value || '',
+        route: document.getElementById('route')?.value || '',
+        cargo: document.getElementById('cargo')?.value || '',
+        message: document.getElementById('message')?.value || ''
+      };
+    }
+
+    function buildTelegramMessage(data) {
+      return `Новая заявка с сайта ГРЭК\nИмя: ${data.name}\nТелефон: ${data.phone}\nМаршрут: ${data.route}\nГруз: ${data.cargo}\nКомментарий: ${data.message}`;
+    }
+
+    const calcForm = document.getElementById('calcForm');
+    const calcResult = document.getElementById('calcResult');
+
+    function getRateByDistance(distance) {
+      if (distance <= 300) return 85;
+      if (distance <= 800) return 78;
+      if (distance <= 1500) return 72;
+      return 68;
+    }
+
+    calcForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const distance = Number(document.getElementById('distance').value);
+      const weight = Number(document.getElementById('weight').value);
+      const cargoType = Number(document.getElementById('cargoType').value);
+
+      if (!distance || !weight || distance <= 0 || weight <= 0) {
+        calcResult.innerHTML = `
+          <div class="muted">Итоговая стоимость</div>
+          <div class="result-price">Ошибка</div>
+          <div class="muted">Пожалуйста, укажите корректное расстояние и вес груза</div>
+        `;
+        return;
+      }
+
+      const baseRate = getRateByDistance(distance);
+      const weightFactor = weight > 20 ? 1.15 : weight > 10 ? 1.07 : 1;
+      const basePrice = distance * baseRate;
+      const minimumOrder = 30000;
+      const finalPrice = Math.max(minimumOrder, Math.round(basePrice * weightFactor * cargoType));
+
+      calcResult.innerHTML = `
+        <div class="muted">Итоговая стоимость</div>
+        <div class="result-price">${finalPrice.toLocaleString('ru-RU')} ₽</div>
+        <div class="muted">Ориентировочный расчет с минимальной стоимостью рейса 30 000 ₽. Для точной цены оставьте заявку менеджеру.</div>
+      `;
+    });
+
+    const leadForm = document.getElementById('leadForm');
+    const leadSuccess = document.getElementById('leadSuccess');
+    const leadError = document.getElementById('leadError');
+
+    leadForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      leadSuccess.style.display = 'none';
+      leadError.style.display = 'none';
+
+      const submitButton = leadForm.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.textContent;
+      submitButton.disabled = true;
+      submitButton.textContent = 'Отправка...';
+
+      const leadData = getLeadData();
+
+      try {
+        const response = await fetch(API_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            ...leadData,
+            email: 'GREK0708@bk.ru',
+            telegram: '@grek_logistic',
+            telegramText: buildTelegramMessage(leadData)
+          })
+        });
+
+        if (!response.ok) throw new Error('Ошибка отправки');
+
+        leadSuccess.style.display = 'block';
+        leadForm.reset();
+
+        setTimeout(() => {
+          leadSuccess.style.display = 'none';
+        }, 5000);
+      } catch (error) {
+        leadError.style.display = 'block';
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+      }
+    });
+  </script>
+</body>
+</html>
